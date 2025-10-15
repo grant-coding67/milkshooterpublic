@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    READ!!!!!!
+
+    DO NOT MESS WITH THESE FILES IT CAN MESS WITH YOUR GAME AND CAN ALSO RESULT IN
+    PERMANENT DELETION WITH NO REFUND
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>milk drinking simulator</title>
+        <link rel="icon" type="image/png" href="6-60517_transparent-background-glass-of-milk-png-png-download.png">
+        <style>
+            p{
+                color: aliceblue;
+                font-size: 30px;
+                
+            }
+         
+            body{
+                background-image:url("bg.png");
+                background-size:50%;
+
+
+                }
+                
+                html{
+                cursor: url("crosshair.png") 16 16, auto;     
+
+                }
+        #milkimg{
+            height: 30%;
+            position: absolute;
+        }
+        #scrollable-div {
+    height: 150px; /* Fixed height */
+    width: 10%;
+    overflow: auto; /* Adds scrollbars only when content overflows */
+    border: 1px solid #4CAF50; /* Optional styling */
+    padding: 10px;
+    background-color: #202020;
+}
+.buttons{
+    margin-bottom: 10px;
+}
+                
+        </style>
+<script>
+
+
+    
+    
+    function randomnumb(min, max){
+        return(Math.floor(Math.random() * (max - min + 1)) + min);
+        
+    }
+
+
+
+
+function createmilk(){
+    
+    document.body.append(milkimg);
+    document.getElementById("milkimg").src = mlkimage;
+    
+
+    document.getElementById("milkimg").style.left = randomnumb(10,90) + "%";
+    document.getElementById("milkimg").style.top = randomnumb(10,70) + "%";
+
+    
+}
+    let cpm = 1;
+    let milk = 0;
+
+
+    let mlkimage = "cupofmilk.png";
+    let milkimg = document.createElement("img");
+    let Strawberrymilk = false;
+    milkimg.id = "milkimg";
+    milkimg.src = mlkimage;
+    milkimg.style.width = "10%";
+
+    let formattedmilk = 0;
+    function removemilk(){
+    document.getElementById("milkimg").remove();
+    milk = milk + cpm;
+    if (milk > 4999 & milk < 1000000){
+        document.getElementById("milkcounter").innerHTML = "Milk: " + (milk/1000).toFixed(2) + "k"
+        
+    }else if(milk >= 1000000){
+        document.getElementById("milkcounter").innerHTML = "Milk: " + (milk/1000000).toFixed(2) + "M"
+        
+    }
+    else{
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+    }
+    
+
+createmilk()
+}
+window.onload = function(){
+        document.body.append(milkimg);
+document.getElementById("milkimg").onclick = function(e){
+removemilk()
+}
+}
+function decreaseMilk(currentMilk , number) {
+  // 'currentMilk' is a copy, changing it does not affect the outer 'milk'
+  currentMilk = currentMilk - number;
+  return currentMilk;
+}
+let chocolatesubtract = false;
+    let Chocolatemilk = false;
+
+function clickchocolate(){
+if (Chocolatemilk == false){
+    if (milk >= 29){
+        cpm = 2;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("choccy").innerHTML = "Chocolate milk:owned";
+        Chocolatemilk = true
+        mlkimage = "chocolatecup.webp";
+    }else if(milk <= 30){
+        alert("not enough money")
+    }
+}
+if (Chocolatemilk == true){
+        mlkimage = "chocolatecup.webp";
+        cpm = 2;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("choccy").innerHTML = "Chocolate milk:owned";
+
+}
+if (Chocolatemilk == true & chocolatesubtract == false){
+    milk = milk - 30;
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+
+    chocolatesubtract = true;
+}
+}
+
+function formatNumber(number) {
+  // Use the toLocaleString method to add suffixes to the number
+  umber.toLocaleString('en-US', {
+    // add suffixes for thousands, millions, and billions
+    // the maximum number of decimal places to use
+    maximumFractionDigits: 2,
+    // specify the abbreviations to use for the suffixes
+    notation: 'compact',
+    compactDisplay: 'short'
+  });
+}
+let strawberrysubtract = false;
+function clickstrawberry(){
+if (Strawberrymilk == false){
+
+    if (milk >= 75){
+        cpm = 4;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("stwarberry").innerHTML = "Strawberry milk:owned";
+        mlkimage = "strawberrycup.png";
+        Strawberrymilk = true;
+    }else if (milk < 75){
+        alert("not enough money")
+    }
+}else if (Strawberrymilk == true){
+        mlkimage = "strawberrycup.png";
+        cpm = 4;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+                document.getElementById("stwarberry").innerHTML = "Strawberry milk:owned";
+
+
+}
+if (Strawberrymilk == true & strawberrysubtract == false){
+    milk = milk - 75;
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+
+    strawberrysubtract = true;
+}
+}
+
+let twopercentsubtract = false;
+    let twopercent = false;
+
+function twopercentclick(){
+if (twopercent == false){
+    if (milk >= 150){
+        cpm = 8;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("twopercent").innerHTML = "2% milk:owned";
+        
+        mlkimage = "2percent.png";
+        twopercent = true;
+    }else if(milk < 150){
+        alert("not enough money")
+    }
+}else if (twopercent == true){
+        mlkimage = "2percent.png";
+        cpm = 8;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("twopercent").innerHTML = "2% milk:owned";
+
+}
+if (twopercent == true & twopercentsubtract == false){
+    milk = milk - 150;
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+
+    twopercentsubtract = true;
+}
+}
+
+let halfgallonsubtract = false;
+    let halfgallon = false;
+
+function halfgallonclick(){
+if (halfgallon == false){
+    if (milk >= 300){
+        cpm = 15;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("halfgallon").innerHTML = "half gallon:owned";
+        
+        mlkimage = "halfgalon.png";
+        halfgallon = true;
+    }else if(milk < 300){
+        alert("not enough money")
+    }
+}else if (halfgallon == true){
+        mlkimage = "halfgalon.png";
+        cpm = 15;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("halfgallon").innerHTML = "half gallon:owned";
+
+}
+if (halfgallon == true & halfgallonsubtract == false){
+    halfgallonsubtract = true;
+
+    milk = milk - 300;
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+
+}
+}
+
+
+let gallonsubtract = false;
+    let gallon = false;
+
+function gallonclick(){
+if (gallon == false){
+    if (milk >= 500){
+        cpm = 30;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("gallon").innerHTML = "gallon:owned";
+        
+        mlkimage = "gallon.png";
+        gallon = true;
+    }else if(milk < 500){
+        alert("not enough money")
+    }
+}else if (gallon == true){
+        mlkimage = "gallon.png";
+        cpm = 30;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("gallon").innerHTML = "gallon:owned";
+
+}
+if (gallon == true & gallonsubtract == false){
+    milk = milk - 500;
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+
+    gallonsubtract = true;
+}
+}
+
+let babycowsubtract = false;
+    let babycow = false;
+
+function babycowclick(){
+if (babycow == false){
+    if (milk >= 1000){
+        cpm = 75;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("babycow").innerHTML = "baby cow:owned";
+        
+        mlkimage = "babycow.png";
+        babycow = true;
+    }else if(milk < 1000){
+        alert("not enough money")
+    }
+}else if (babycow == true){
+        mlkimage = "babycow.png";
+        cpm = 75;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("babycow").innerHTML = "baby cow:owned";
+
+}
+if (babycow == true & babycowsubtract == false){
+    milk = milk - 1000;
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+babycowsubtract = true;
+}
+}
+
+
+
+
+let cowsubtract = false;
+    let cow = false;
+
+function cowclick(){
+if (cow == false){
+    if (milk >= 2500){
+        cpm = 150;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("cow").innerHTML = "cow:owned";
+        
+        mlkimage = "cow.png";
+        cow = true;
+    }else if(milk < 2500){
+        alert("not enough money")
+    }
+}else if (cow == true){
+        mlkimage = "cow.png";
+        cpm = 150;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("cow").innerHTML = "cow:owned";
+
+}
+if (cow == true & cowsubtract == false){
+    milk = milk - 2500;
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+cowsubtract = true;
+}
+}
+
+
+
+let vanillashakesubtract = false;
+    let vanillashake = false;
+
+function vanillashakeclick(){
+if (vanillashake == false){
+    if (milk >= 5000){
+        cpm = 300;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("vanillashake").innerHTML = "Vanilla milkshake:owned";
+        
+        mlkimage = "vanillashake.png";
+        vanillashake = true;
+    }else if(milk < 5000){
+        alert("not enough money")
+    }
+}else if (vanillashake == true){
+        mlkimage = "vanillashake.png";
+        cpm = 300;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("vanillashake").innerHTML = "Vanilla milkshake:owned";
+
+}
+if (vanillashake == true & vanillashakesubtract == false){
+    milk = milk - 5000;
+        document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+vanillashakesubtract = true;
+}
+}
+
+
+
+
+let strawberryshakesubtract = false;
+    let strawberryshake = false;
+
+function strawberryshakeclick(){
+if (strawberryshake == false){
+    if (milk >= 20000){
+        cpm = 1000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("strawberryshake").innerHTML = "Strawberry milkshake:owned";
+        
+        mlkimage = "strawberryshake.png";
+        strawberryshake = true;
+    }else if(milk < 20000){
+        alert("not enough money")
+    }
+}else if (strawberryshake == true){
+        mlkimage = "strawberryshake.png";
+        cpm = 1000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("strawberryshake").innerHTML = "Strawberry milkshake:owned";
+
+}
+if (strawberryshake == true & strawberryshakesubtract == false){
+    strawberryshakesubtract = true;
+
+    milk = milk - 20000;
+    document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+}
+}
+
+let chocolateshake = false;
+    let chocolateshakesubtract = false;
+
+function chocolateshakeclick(){
+if (chocolateshake == false){
+    if (milk >= 50000){
+        cpm = 2000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("chocolateshake").innerHTML = "Chocolate milkshake:owned";
+        
+        mlkimage = "Chocolateshake.png";
+        chocolateshake = true;
+    }else if(milk < 50000){
+        alert("not enough money")
+    }
+}else if (chocolateshake == true){
+        mlkimage = "Chocolateshake.png";
+        cpm = 2000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("chocolateshake").innerHTML = "Chocolate milkshake:owned";
+
+}
+if (chocolateshake == true & chocolateshakesubtract == false){
+    milk = milk - 50000;
+
+    chocolateshakesubtract = true;
+
+    document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+}
+}
+
+
+
+let truck = false;
+    let trucksubtract = false;
+
+function truckclick(){
+if (truck == false){
+    if (milk >= 150000){
+        cpm = 5000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("truck").innerHTML = "Milk truck:owned";
+        
+        mlkimage = "milktruck.png";
+        truck = true;
+    }else if(milk < 150000){
+        alert("not enough money")
+    }
+}else if (truck == true){
+        mlkimage = "milktruck.png";
+        cpm = 5000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("truck").innerHTML = "Milk truck:owned";
+
+}
+if (truck == true & trucksubtract == false){
+    milk = milk - 150000;
+
+    trucksubtract = true;
+
+    document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+}
+}
+
+
+
+let factory = false;
+    let factorysubtract = false;
+
+function factoryclick(){
+if (factory == false){
+    if (milk >= 250000){
+        cpm = 10000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("factory").innerHTML = "Milk Factory:owned";
+        
+        mlkimage = "factory.webp";
+        factory = true;
+    }else if(milk < 250000){
+        alert("not enough money")
+    }
+}else if (factory == true){
+        mlkimage = "factory.webp";
+        cpm = 10000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("factory").innerHTML = "Milk Factory:owned";
+
+}
+if (factory == true & factorysubtract == false){
+    milk = milk - 250000;
+
+    factorysubtract = true;
+
+    document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+}
+}
+
+
+let ocean = false;
+    let oceansubtract = false;
+
+function oceanclick(){
+if (ocean == false){
+    if (milk >= 500000){
+        cpm = 20000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("ocean").innerHTML = "Milk Ocean:owned";
+        
+        mlkimage = "ocean-milk.jpg";
+        ocean = true;
+    }else if(milk < 500000){
+        alert("not enough money")
+    }
+}else if (ocean == true){
+        mlkimage = "ocean-milk.jpg";
+        cpm = 20000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("ocean").innerHTML = "Milk Ocean:owned";
+
+}
+if (ocean == true & oceansubtract == false){
+    milk = milk - 500000;
+
+    oceansubtract = true;
+
+    document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+}
+}
+
+
+
+let milkyway = false;
+    let milkywaysubtract = false;
+
+function milkywayclick(){
+if (milkyway == false){
+    if (milk >= 1000000){
+        cpm = 100000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+        document.getElementById("milkyway").innerHTML = "Milky way galaxy:owned";
+        
+        mlkimage = "milkyway.webp";
+        milkyway = true;
+    }else if(milk < 1000000){
+        alert("not enough money")
+    }
+}else if (milkyway == true){
+        mlkimage = "milkyway.webp";
+        cpm = 100000;
+        document.getElementById("mpc").innerHTML = "Milk per cup: " + cpm;
+            document.getElementById("milkyway").innerHTML = "Milky way galaxy:owned";
+
+}
+if (milkyway == true & milkywaysubtract == false){
+    milk = milk - 1000000;
+
+    milkywaysubtract = true;
+
+    document.getElementById("milkcounter").innerHTML = "Milk: " + milk;
+}
+}
+</script>
+</head>
+<body>
+    <p id="milkcounter">Milk: 0</p>
+    <p id="mpc">Milk per cup: 1</p>
+    <div id="scrollable-div">
+        <p>Milk Store</p>
+        
+        <button id="choccy" onclick="clickchocolate()" class="buttons">Chocolate milk-30</button>
+        <Br>
+        <button id="stwarberry" onclick="clickstrawberry()" class="buttons">Strawberry milk-75</button>
+        <Br>
+        <button id="twopercent" onclick="twopercentclick()" class="buttons">2% milk -150</button>
+        <Br>
+        <button id="halfgallon" onclick="halfgallonclick()" class="buttons">HALF GALLON-300</button>
+        <Br>
+        <button id="gallon" onclick="gallonclick()" class="buttons">GALLON-500</button>
+        <Br>
+        <button id="babycow" onclick="babycowclick()" class="buttons">baby cow-1000</button>
+        <Br>
+         <button id="cow" onclick="cowclick()" class="buttons" >cow-2500</button>
+         <Br>
+        
+        <button id="vanillashake" onclick="vanillashakeclick()" class="buttons" >Vanilla Milk Shake-5k</button>
+        <Br>
+        <button id="strawberryshake" onclick="strawberryshakeclick()" class="buttons" >Strawberry Milk Shake-20k</button>
+        <Br>
+        <button id="chocolateshake" onclick="chocolateshakeclick()" class="buttons" >Chocolate Milk Shake-50k</button>
+        <Br>
+        <button id="truck" onclick="truckclick()" class="buttons" >Milk Truck-150k</button>
+         <button id="factory" onclick="factoryclick()" class="buttons" >Milk Factory-250k</button>
+        <button id="ocean" onclick="oceanclick()" class="buttons" >Milk Ocean- 500k</button>
+                <button id="milkyway" onclick="milkywayclick()" class="buttons" >Milky way galaxy- 1M</button>
+
+
+
+    </div>
+</body>
+</html>
